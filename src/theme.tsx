@@ -16,6 +16,18 @@ const theme = extendTheme({
   },
   fonts,
   breakpoints,
+  components: {
+    Popover: {
+      variants: {
+        responsive: {
+          popper: {
+            maxWidth: 'unset',
+            width: 'unset'
+          }
+        }
+      }
+    }
+  }
 })
 
 export default theme

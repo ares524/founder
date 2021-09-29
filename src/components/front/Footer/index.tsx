@@ -12,7 +12,7 @@ import * as React from 'react'
 import { Link } from './Link'
 
 export const Footer = () => (
-  <Box as="footer" role="contentinfo" mx="auto" maxW="7xl" py="12" px={{ base: '4', md: '8' }}>
+  <Box as="footer" role="contentinfo" mx="auto" maxW="9xl" py="12" px={{ base: '4', md: '8' }}>
     <Stack
       direction={{ base: 'column', md: 'row' }}
       justifyContent="space-between"

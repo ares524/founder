@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 
 import { SearchIcon } from '@chakra-ui/icons'
+import { ConnectModal } from './connect'
 
 const WrappedLink = ({ href, children }) => {
   return (
@@ -30,11 +31,21 @@ type HeaderProps = {
 const Header = (props: HeaderProps) => {
   const innerWidth = props.innerWidth || '1040px';
   const [largeScreen] = useMediaQuery('(min-width: 700px)');
+  const [connectModalStaus, setConnectModalStaus] = React.useState(false);
+
+  const handleOpenConnectModal = () => {
+    setConnectModalStaus(true);
+  }
+
+  const handleCloseConnectModal = () => {
+    setConnectModalStaus(false);
+  }
 
   return (
     <Flex
       px={[4, 8]}
       h='100px'
+      backgroundColor="#F2F2F2"
     >
       <Flex
         align='center'
@@ -61,17 +72,16 @@ const Header = (props: HeaderProps) => {
                         pointerEvents="none"
                         children={<SearchIcon boxSize="1.5em" viewBox="-5 0 27 15" color="gray.300" />}
                     />
-                    <Input type="search" borderRadius="999px"  placeholder="Search Foundation..." size="lg" />
+                    <Input focusBorderColor="black" shadow="lg" type="search" borderRadius="999px"  placeholder="Search Foundation..." size="lg" />
                 </InputGroup>
             </>
         </HStack>
         <HStack spacing={6} size="lg">
-            <>
-              <Button size="lg" borderRadius="999px" color="white" backgroundColor="#000000">
-                Connect Wallet
-              </Button>
-            </>
+          <Button size="lg" shadow="lg" borderRadius="999px" color="white" backgroundColor="#000000" onClick={() => handleOpenConnectModal()} >
+            Connect Wallet
+          </Button>
         </HStack>
+        <ConnectModal isOpen={connectModalStaus} handleClose={handleCloseConnectModal} />
       </Flex>
     </Flex>
   );
